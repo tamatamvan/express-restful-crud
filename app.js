@@ -17,7 +17,7 @@ mongoose.connect('mongodb://127.0.0.1/erc', (err) => {
 });
 
 let routes = require('./routes/index');
-let users = require('./routes/users');
+let api_memo = require('./routes/api_memo');
 
 let app = express();
 
@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/api/memo', api_memo);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

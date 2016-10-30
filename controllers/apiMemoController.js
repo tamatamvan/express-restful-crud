@@ -1,6 +1,6 @@
 let Memo = require('../models/Memo.js');
 
-let all = () => {
+let all = (req, res, next) => {
   Memo.find({}, (err, memos) => {
     if(err) {
       console.log(err);
@@ -10,7 +10,7 @@ let all = () => {
   });
 }
 
-let one = () => {
+let one = (req, res, next) => {
   Memo.findById(req.params.id, (err, memo) => {
     if (err) {
       console.log(err);
@@ -20,7 +20,7 @@ let one = () => {
   });
 }
 
-let add = () => {
+let add = (req, res, next) => {
   Memo.create({
     title: req.body.title,
     message: req.body.message,
@@ -35,7 +35,7 @@ let add = () => {
   });
 }
 
-let edit = () => {
+let edit = (req, res, next) => {
   Memo.update({
     _id: req.params.id
   },
