@@ -5,6 +5,16 @@ let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
+//connecting to mongodb using mongoose
+let mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1/erc', (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Database connected!');
+  }
+});
+
 let routes = require('./routes/index');
 let users = require('./routes/users');
 
