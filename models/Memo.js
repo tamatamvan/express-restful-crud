@@ -5,7 +5,7 @@ let memoSchema = new mongoose.Schema({
   title: String,
   message: String,
 },
-timestamps: true);
+{timestamps: true});
 
 let memo = mongoose.model('memo', memoSchema)
 
