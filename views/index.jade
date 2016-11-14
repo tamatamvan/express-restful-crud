@@ -1,5 +1,63 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1(class='text-center')= title
+  .container
+    .col-sm-6
+      .h3(class='text-center') New Memo
+      .form-group
+        label.control-label(for='MemoTitle') Title
+        input#MemoTitle.form-control(type='text', placeholder="Enter your memo's title")
+      .form-group
+        label.control-label(for='MemoContent') Message
+        textarea#MemoContent.form-control(placeholder="Enter your memo's content")
+      .form-group
+        button.btn.btn-primary(type='submit') Submit
+
+
+    .col-sm-6
+      .h3(class='text-center') Memo List
+      br
+      .list-group
+        a.list-group-item(data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample")
+          | Cras justo odio
+        #collapseExample.panel.panel-defaul.collapse
+          .panel-body
+            | Basic panel
+          .panel-footer
+            .btn-group.btn-group-justified
+              a.btn.btn-xs.btn-success(data-toggle="modal" data-target="#modalEdit") 
+                i.glyphicon.glyphicon-edit
+                |  Edit
+              a.btn.btn-xs.btn-danger(data-toggle="modal" data-target="#modalDelete") 
+                i.glyphicon.glyphicon-trash
+                |  Delete
+                
+    #modalEdit.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel.modal-title Edit Memo
+          .modal-body
+            | ...
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-success(type='button') Save changes
+            
+    #modalDelete.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4#myModalLabel.modal-title Delete Memo
+          .modal-body
+            | ...
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-danger(type='button') Delete
+
+
+            
