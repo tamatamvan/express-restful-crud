@@ -36,7 +36,7 @@ let add = (req, res, next) => {
 }
 
 let edit = (req, res, next) => {
-  Memo.update({
+  Memo.findOneAndUpdate({
     _id: req.params.id
   },
   {
@@ -44,7 +44,7 @@ let edit = (req, res, next) => {
     message: req.body.message,
     createdAt: req.body.createdAt,
     updatedAt: new Date()
-  }, (err, memo) => {
+  }, {new: true}, (err, memo) => {
     if (err) {
       console.log(err);
     } else {
